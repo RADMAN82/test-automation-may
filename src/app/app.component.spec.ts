@@ -10,17 +10,24 @@ describe('AppComponent', () => {
   }));
 
   it('should accept valid PESEL numbers', () => {
-    expect(component.isValidPesel('64042999928')).toBe(false);
-    expect(component.isValidPesel('52022114478')).toBe(false);
-    expect(component.isValidPesel('72021706812')).toBe(false);
-    expect(component.isValidPesel('80042448774')).toBe(false);
-    expect(component.isValidPesel('97031003029')).toBe(false);
+expect(component.isValidPesel('64042999928')).toBe(true);
   });
 
   it('should reject PESEL numbers with invalid controlNumber', () => {
-    expect(component.isValidPesel('44051401358')).toBe(true);
-    expect(component.isValidPesel('97031003021')).toBe(true);
-    expect(component.isValidPesel('97031003023')).toBe(true);
+expect(component.isValidPesel('44051401358')).toBe(false);
+  });
+
+it('should reject PESEL if not string', () => {
+expect(component.isValidPesel(1)).toBe(false);
+
+  });
+
+it('should reject PESEL if not string', () => {
+expect(component.isValidPesel(null)).toBe(false);
+  });
+
+it('should reject PESEL if not string', () => {
+expect(component.isValidPesel()).toBe(false);
   });
 
 });
